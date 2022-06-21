@@ -12,3 +12,5 @@ class DataFunctions:
         print('avg: ', calc_res['avg'])
         print('min: ', calc_res['low'])
         print('max: ', calc_res['high'])
+
+
