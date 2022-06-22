@@ -23,6 +23,18 @@ class Scraper:
 
         return values
 
+    def icons_extract(self, browser, icons_class):
+        icon = browser.find_elements(By.CLASS_NAME, value='Icon')
+        for j in icon:
+            if j.get_attribute('class') == 'Icon Icon_type_small-pedestrian' or j.get_attribute(
+                    'class') == 'Icon Icon_type_small-bus':
+                if j.get_attribute('class') == 'Icon Icon_type_small-pedestrian':
+                    icons_class.append('walk')
+                if j.get_attribute('class') == 'Icon Icon_type_small-bus':
+                    icons_class.append('bus')
+
+        return icons_class
+
     def values_concatenation(self, values, settings, value_link, browser):
         time.sleep(settings.sleep_time)
         values.extend(self.values_extract(browser, value_link))
